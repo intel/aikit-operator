@@ -197,5 +197,5 @@ spec:
     name: Intel
     url: https://software.intel.com/content/www/us/en/develop/tools/oneapi/application-catalog.html#gs.407z40
   version: 2021.2.0 # {"$openapi":"VERSION"}
-  replaces: 2021.2.0
+  # replaces: 2021.2.0  # This is in case we need to replace some version in the future
   minKubeVersion: 1.17
