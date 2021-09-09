@@ -1,0 +1,41 @@
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  annotations:
+    opendatahub.io/notebook-image-desc: Jupyter notebook image with oneAPI AI Analytics
+      Toolkit and dependencies to start experimenting with advanced AI/ML notebooks.
+    opendatahub.io/notebook-image-name: oneAPI AI Analytics Toolkit
+    openshift.io/image.dockerRepositoryCheck: "2021-09-09T21:50:40Z"
+  creationTimestamp: "2021-09-09T21:50:30Z"
+  generation: 4
+  labels:
+    opendatahub.io/notebook-image: "true"
+  name: oneapi-aikit-2021-2-0-d1e720a
+  namespace: redhat-ods-applications
+  resourceVersion: "10655552"
+  uid: 3248789b-63f0-4ba3-ac0b-7a73406549be
+spec:
+  lookupPolicy:
+    local: false
+  tags:
+  - annotations:
+      opendatahub.io/notebook-python-dependencies: '[{"name":"JupyterLab","version":"3.0.14"},{"name":"Notebook","version":"6.1.12"}]'
+      opendatahub.io/notebook-software: '[{"name":"Python","version":"v3.7.9"}, {"name":"Tag","version":"2021-2-0-d1e720a"}]'
+    from:
+      kind: DockerImage
+      name: registry.connect.redhat.com/intel/oneapi-aikit
+    generation: 2
+    importPolicy: {}
+    name: latest
+    referencePolicy:
+      type: Source
+status:
+  dockerImageRepository: image-registry.openshift-image-registry.svc:5000/redhat-ods-applications/oneapi-aikit-2021-2-0-d1e720a
+  publicDockerImageRepository: default-route-openshift-image-registry.apps.intel-colabo.yp9m.p1.openshiftapps.com/redhat-ods-applications/oneapi-aikit-2021-2-0-d1e720a
+  tags:
+  - items:
+    - created: "2021-09-09T21:50:40Z"
+      dockerImageReference: registry.connect.redhat.com/intel/oneapi-aikit@sha256:03e51d4638c6e24504ccfcb82bc8fc7d03ffe2f220f5d0527a274009201ccbd8
+      generation: 2
+      image: sha256:03e51d4638c6e24504ccfcb82bc8fc7d03ffe2f220f5d0527a274009201ccbd8
+    tag: latest
