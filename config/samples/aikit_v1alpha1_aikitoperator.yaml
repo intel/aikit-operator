@@ -8,6 +8,8 @@ spec:
   nameOverride: ""
   imagestream:
     name: oneapi-aikit
+    notebook-python-dependencies: '[{"name":"JupyterLab","version":"3.0.14"},{"name":"Notebook","version":"6.1.12"}]'
+    notebook-software: '[{"name":"Python","version":"v3.7.9"}, {"name":"Tag","version":"2021-2-0-d1e720a"}]'
     namespace: redhat-ods-applications # {"$openapi":"OC_PROJECT"}
     registry:
       root: registry.connect.redhat.com
