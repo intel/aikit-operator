@@ -43,8 +43,8 @@ spec:
   - name: Aikit Operator
     url: https://aikit-operator.domain
   maturity: alpha
-  minKubeVersion: "1.17"
+  minKubeVersion: 1.17.0
   provider:
     name: Intel
   version: 0.0.0
-  minKubeVersion: 1.17.0
+

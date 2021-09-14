@@ -190,9 +190,12 @@ spec:
   maintainers:
     - email: kam.d.kasravi@intel.com
       name: Kam Kasravi
+    - email: abolfazl.shahbazi@intel.com
+      name: Abolfazl Shahbazi
   maturity: alpha
+  minKubeVersion: 1.17.0
   provider:
     name: Intel
     url: https://software.intel.com/content/www/us/en/develop/tools/oneapi/application-catalog.html#gs.407z40
   version: 2021.2.0 # {"$openapi":"VERSION"}
-  minKubeVersion: 1.17
+  # replaces: 2021.2.0  # This is in case we need to replace some version in the future
