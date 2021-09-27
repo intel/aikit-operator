@@ -11,7 +11,7 @@ LABEL operators.operatorframework.io.metrics.mediatype.v1=metrics+v1
 LABEL operators.operatorframework.io.metrics.project_layout=helm.sdk.operatorframework.io/v1
 
 #Add these labels
-LABEL com.redhat.openshift.versions="v4.7"
+LABEL com.redhat.openshift.versions="v4.8"
 LABEL com.redhat.delivery.operator.bundle=true
 LABEL com.redhat.delivery.backport=false
 

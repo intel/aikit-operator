@@ -8,6 +8,6 @@ namespace: redhat-ods-applications # {"$openapi":"OC_PROJECT"}
 # field above.
 namePrefix: aikit-operator-
 resources:
-  - crd
-  - rbac
-  - manager
+- crd
+- rbac
+- manager

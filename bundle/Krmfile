@@ -40,17 +40,17 @@ openAPI:
           name: IMAGE
           pattern: ${IMAGE_TAG_BASE}:${VERSION}
           values:
-            - marker: ${IMAGE_TAG_BASE}
-              ref: '#/definitions/io.k8s.cli.setters.IMAGE_TAG_BASE'
-            - marker: ${VERSION}
-              ref: '#/definitions/io.k8s.cli.setters.VERSION'
+          - marker: ${IMAGE_TAG_BASE}
+            ref: '#/definitions/io.k8s.cli.setters.IMAGE_TAG_BASE'
+          - marker: ${VERSION}
+            ref: '#/definitions/io.k8s.cli.setters.VERSION'
     io.k8s.cli.substitutions.CSV_NAME:
       x-k8s-cli:
         substitution:
           name: CSV_NAME
           pattern: ${IMAGE_NAME}.v${VERSION}
           values:
-            - marker: ${IMAGE_NAME}
-              ref: '#/definitions/io.k8s.cli.setters.IMAGE_NAME'
-            - marker: ${VERSION}
-              ref: '#/definitions/io.k8s.cli.setters.VERSION'
+          - marker: ${IMAGE_NAME}
+            ref: '#/definitions/io.k8s.cli.setters.IMAGE_NAME'
+          - marker: ${VERSION}
+            ref: '#/definitions/io.k8s.cli.setters.VERSION'

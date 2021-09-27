@@ -40,9 +40,9 @@ openAPI:
           name: IMAGE
           pattern: ${IMAGE_TAG_BASE}/${IMAGE_NAME}:${VERSION}
           values:
-            - marker: ${IMAGE_TAG_BASE}
-              ref: '#/definitions/io.k8s.cli.setters.IMAGE_TAG_BASE'
-            - marker: ${IMAGE_NAME}
-              ref: '#/definitions/io.k8s.cli.setters.IMAGE_NAME'
-            - marker: ${VERSION}
-              ref: '#/definitions/io.k8s.cli.setters.VERSION'
+          - marker: ${IMAGE_TAG_BASE}
+            ref: '#/definitions/io.k8s.cli.setters.IMAGE_TAG_BASE'
+          - marker: ${IMAGE_NAME}
+            ref: '#/definitions/io.k8s.cli.setters.IMAGE_NAME'
+          - marker: ${VERSION}
+            ref: '#/definitions/io.k8s.cli.setters.VERSION'
