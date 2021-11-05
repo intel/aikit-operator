@@ -1,5 +1,5 @@
 # Build the manager binary
-FROM registry.redhat.io/openshift4/ose-helm-operator:v4.7
+FROM registry.redhat.io/openshift4/ose-helm-operator:v4.8
 
 ### Required OpenShift Labels
 LABEL name="Intel\u00ae oneAPI Analytics Toolkit Operator" \

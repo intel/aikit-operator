@@ -1,5 +1,5 @@
 ## Append samples you want in your CSV to this file as resources ##
 resources:
-  - aikit_v1alpha1_aikitcontainer.yaml
+- aikit_v1alpha1_aikitcontainer.yaml
 #+kubebuilder:scaffold:manifestskustomizesamples
 namespace: redhat-ods-applications # {"$openapi":"OC_PROJECT"}

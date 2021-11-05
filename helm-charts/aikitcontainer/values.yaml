@@ -9,8 +9,8 @@ imagestream:
   name: tensorflow-notebook
   namespace: redhat-ods-applications # {"$openapi":"OC_PROJECT"}
   registry:
-    root: quay.io
-    repo: kamkasravi
-    name: aikit-notebook
-    version: v0.0.2
+    root: registry.connect.redhat.com
+    repo: intel
+    name: oneapi-aikit
+    version: 2021.2.0-d1e720a
 

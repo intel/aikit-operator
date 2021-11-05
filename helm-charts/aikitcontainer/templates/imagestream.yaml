@@ -1,6 +1,8 @@
 apiVersion: image.openshift.io/v1
 kind: ImageStream
 metadata:
+  annotations:
+    opendatahub.io/notebook-image-name: "oneAPI AI Analytics Toolkit"
   labels:
     opendatahub.io/notebook-image: "true"
   name: {{ .Values.imagestream.name }}
@@ -9,9 +11,12 @@ spec:
   lookupPolicy:
     local: true
   tags:
-  - from:
+  - name: {{ .Values.imagestream.name }}
+    annotations:
+      opendatahub.io/notebook-python-dependencies: '[{"name":"JupyterLab","version":"3.0.14"},{"name":"Notebook","version":"6.1.12"}]'
+      opendatahub.io/notebook-software: '[{"name":"Python","version":"v3.7.9"}, {"name":"AiKit","version":"2021.2.0-d1e720a"}]'
+    from:
       kind: DockerImage
       name: {{ .Values.imagestream.registry.root }}/{{ .Values.imagestream.registry.repo }}/{{ .Values.imagestream.registry.name }}:{{ .Values.imagestream.registry.version }}
-    name: {{ .Values.imagestream.version }}
     referencePolicy:
       type: Source
