@@ -19,12 +19,12 @@
 # To re-generate a bundle for another specific version without changing the standard setup, you can:
 # - use the VERSION as arg of the bundle target (e.g make bundle VERSION=2021.2.0)
 # - use environment variables to overwrite this value (e.g export VERSION=2021.2.0)
-GENERIC_VERSION ?= 2022.3
+GENERIC_VERSION ?= 2023.1
 # DAY_OF_YEAR ?= $(shell date +%-m%d%H)
 DAY_OF_YEAR ?= 0 # $(shell date +%-m%d%H)
 # VERSION ?= `echo ${GENERIC_VERSION} | sed "s/\(.*\)[0-9])*/\1${DAY_OF_YEAR}/"`-dev-`git rev-parse --short HEAD`
 # VERSION ?= `echo ${GENERIC_VERSION} | sed "s/\(.*\)[0-9])*/\1${DAY_OF_YEAR}/"`  # -dev-`git rev-parse --short HEAD`
-VERSION ?= 2022.3.${DAY_OF_YEAR}
+VERSION ?= 2023.1.${DAY_OF_YEAR}
 
 # CHANNELS define the bundle channels used in the bundle.
 # Add a new line here if you would like to change its default config. (E.g CHANNELS = "preview,fast,stable")
