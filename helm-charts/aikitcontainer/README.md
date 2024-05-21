@@ -1,1 +1,1 @@
-# aikit-operator
+# ai-tools-operator

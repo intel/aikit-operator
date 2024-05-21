@@ -30,7 +30,7 @@ metadata:
     capabilities: "Basic Install"
     categories: "AI/Machine Learning"
     support: Intel
-  name: aikit-operator.v2023.1.0 # {"$openapi":"CSV_NAME"}
+  name: aikit-operator.v2024.1.0 # {"$openapi":"CSV_NAME"}
   namespace: placeholder
 spec:
   apiservicedefinitions: {}
@@ -123,7 +123,8 @@ spec:
                   valueFrom:
                     fieldRef:
                       fieldPath: metadata.annotations['olm.targetNamespaces']
-                image: registry.connect.redhat.com/intel/aikit-operator:2023.1.0 # {"$openapi":"IMAGE"}
+                image: registry.connect.redhat.com/intel/aikit-operator:2024.1.0 # {"$openapi":"IMAGE"}
+                imagePullPolicy: Always
                 name: manager
                 resources:
                   limits:
@@ -195,5 +196,5 @@ spec:
   provider:
     name: Intel
     url: https://software.intel.com/content/www/us/en/develop/tools/oneapi/application-catalog.html#gs.407z40
-  version: 2023.1.0 # {"$openapi":"VERSION"}
+  version: "2024.1.0" # {"$openapi":"VERSION"}
   replaces: aikit-operator.v2021.2.92911 # This is in case we need to replace some version in the future

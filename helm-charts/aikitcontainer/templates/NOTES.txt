@@ -1,4 +1,4 @@
 1. Get the imagestream by running these commands:
-{{- if .Values.imagestream.name }}
-  kubectl --namespace {{ .Release.Namespace }} get imagestream {{ .Values.imagestream.name }}
-{{- end }}
+  kubectl --namespace {{ $.Release.Namespace }} get imagestream intel-tensorflow
+  kubectl --namespace {{ $.Release.Namespace }} get imagestream intel-pytorch
+  kubectl --namespace {{ $.Release.Namespace }} get imagestream intel-ml

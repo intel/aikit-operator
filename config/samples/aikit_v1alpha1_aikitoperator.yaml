@@ -4,13 +4,11 @@ metadata:
   name: create-imagestream
 spec:
   # Default values copied from <project_dir>/helm-charts/aikitcontainer/values.yaml
-  fullnameOverride: ""
   nameOverride: ""
-  imagestream:
-    name: oneapi-aikit
-    namespace: redhat-ods-applications # {"$openapi":"OC_PROJECT"}
-    registry:
-      root: registry.connect.redhat.com
-      repo: intel
-      name: oneapi-aikit
-      version: latest
+  fullnameOverride: ""
+  registry:
+    root: quay.io
+    repo: opendatahub/workbench-images
+  opendatahub:
+    commit: "20240430"
+  namespace: redhat-ods-applications # {"$openapi":"OC_PROJECT"}
