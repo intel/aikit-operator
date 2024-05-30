@@ -12,24 +12,32 @@ metadata:
             "namespace": "redhat-ods-applications"
           },
           "spec": {
+            "nameOverride": "",
             "fullnameOverride": "",
-            "imagestream": {
-              "name": "oneapi-aikit",
-              "namespace": "redhat-ods-applications",
-              "registry": {
-                "root": "registry.connect.redhat.com",
-                "repo": "intel",
-                "name": "oneapi-aikit",
-                "version": "latest"
-              }
+            "registry": {
+              "root": "quay.io",
+              "repo": "opendatahub/workbench-images"
             },
-            "nameOverride": ""
+            "opendatahub": {
+              "commit": "20240430"
+            },
+            "namespace": "redhat-ods-applications"
           }
         }
       ]
     capabilities: "Basic Install"
     categories: "AI/Machine Learning"
     support: Intel
+    features.operators.openshift.io/disconnected: 'false'
+    features.operators.openshift.io/fips-compliant: 'true'
+    features.operators.openshift.io/proxy-aware: 'false'
+    features.operators.openshift.io/tls-profiles: 'true'
+    features.operators.openshift.io/token-auth-aws: 'false'
+    features.operators.openshift.io/token-auth-azure: 'false'
+    features.operators.openshift.io/token-auth-gcp: 'false'
+    features.operators.openshift.io/cnf: 'false'
+    features.operators.openshift.io/cni: 'false'
+    features.operators.openshift.io/csi: 'false'
   name: aikit-operator.v2024.1.0 # {"$openapi":"CSV_NAME"}
   namespace: placeholder
 spec:
@@ -189,12 +197,21 @@ spec:
   - name: Aikit Operator
     url: https://aikit-operator.domain
   maintainers:
+  - email: sharvil.shah@intel.com
+    name: Sharvil Shah
   - email: abolfazl.shahbazi@intel.com
     name: Abolfazl Shahbazi
+  - email: kam.d.kasravi@intel.com
+    name: Kam Kasravi
   maturity: alpha
   minKubeVersion: 1.20.0
   provider:
     name: Intel
     url: https://software.intel.com/content/www/us/en/develop/tools/oneapi/application-catalog.html#gs.407z40
-  version: "2024.1.0" # {"$openapi":"VERSION"}
-  replaces: aikit-operator.v2021.2.92911 # This is in case we need to replace some version in the future
+  relatedImages:
+    - image: registry.connect.redhat.com/intel/aikit-operator@sha256:e1736ec91f897ec4ec3522393204475252a9859d48fdf19ae81ea52db05d1345
+      name: manager
+  version: 2024.1.52023 # {"$openapi":"VERSION"}
+  #replaces: aikit-operator.v2022.3.92622 # This is in case we need to replace some version in the future
+  # skips:
+  # - aikit-operator.v2022.3.0 # This is in case we need to skip a newer version of AiKit
