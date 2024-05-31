@@ -1,22 +1,86 @@
 apiVersion: image.openshift.io/v1
 kind: ImageStream
 metadata:
-  annotations:
-    opendatahub.io/notebook-image-name: "oneAPI AI Analytics Toolkit"
+  annotations: 
+    opendatahub.io/notebook-image-creator: 'kube:admin'
+    opendatahub.io/notebook-image-desc: ''
+    opendatahub.io/notebook-image-name: Intel® Optimized TensorFlow
+    opendatahub.io/notebook-image-url: 'quay.io/opendatahub/workbench-images:jupyter-intel-tensorflow-ubi9-python-3.9-{{ $.Values.opendatahub.commit }}'
+    opendatahub.io/recommended-accelerators: '["gpu.intel.com/i915"]'
   labels:
+    opendatahub.io/dashboard: 'true'
     opendatahub.io/notebook-image: "true"
-  name: {{ .Values.imagestream.name }}
-  namespace: {{ .Values.imagestream.namespace }}
+  name: intel-tensorflow
+  namespace: {{ $.Values.namespace }}
 spec:
   lookupPolicy:
     local: true
   tags:
-  - name: {{ .Values.imagestream.name }}
+  - name: intel-tensorflow
     annotations:
-      opendatahub.io/notebook-python-dependencies: '[{"name":"JupyterLab","version":"3.4.4"},{"name":"Notebook","version":"7.2.2"}]'
-      opendatahub.io/notebook-software: '[{"name":"Python","version":"3.9"}, {"name":"AiKit","version":"2023.1.0"}]'
+      opendatahub.io/notebook-software: '[{"name":"Intel® oneAPI","version":"2024.0"},{"name":"Python","version":"v3.9"},{"name":"TensorFlow","version":"2.14"},{"name":"Intel® Extension for TensorFlow","version":"2.14"}]'
+      opendatahub.io/notebook-python-dependencies: '[{"name":"TensorFlow","version":"2.14"},{"name":"Intel® Extension for TensorFlow","version":"2.14"},{"name":"Tensorboard","version":"2.14"},{"name":"Boto3","version":"1.34"},{"name":"Kafka-Python","version":"2.0"},{"name":"Kfp-tekton","version":"1.5"},{"name":"Matplotlib","version":"3.6"},{"name":"Numpy","version":"1.26"},{"name":"Pandas","version":"1.5"},{"name":"Scikit-learn","version":"1.4"},{"name":"Scipy","version":"1.11"},{"name":"Elyra","version":"3.15"},{"name":"PyMongo","version":"4.5"},{"name":"Pyodbc","version":"4.0"}, {"name":"Codeflare-SDK","version":"0.13"}, {"name":"Sklearn-onnx","version":"1.15"}, {"name":"Psycopg","version":"3.1"}, {"name":"MySQL Connector/Python","version":"8.0"}]'
+      openshift.io/imported-from: 'quay.io/opendatahub/workbench-images:jupyter-intel-tensorflow-ubi9-python-3.9-{{ $.Values.opendatahub.commit }}'
     from:
       kind: DockerImage
-      name: {{ .Values.imagestream.registry.root }}/{{ .Values.imagestream.registry.repo }}/{{ .Values.imagestream.registry.name }}:{{ .Values.imagestream.registry.version }}
+      name: {{ $.Values.registry.root }}/{{ $.Values.registry.repo }}:jupyter-intel-tensorflow-ubi9-python-3.9-{{ $.Values.opendatahub.commit }}
+    referencePolicy:
+      type: Source
+---
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  annotations: 
+    opendatahub.io/notebook-image-creator: 'kube:admin'
+    opendatahub.io/notebook-image-desc: 'Jupyter notebook image with Intel® optimized PyTorch libraries and dependencies to start experimenting with advanced AI/ML notebooks.'
+    opendatahub.io/notebook-image-name: Intel® Optimized PyTorch
+    opendatahub.io/notebook-image-url: 'quay.io/opendatahub/workbench-images:jupyter-intel-pytorch-ubi9-python-3.9-{{ $.Values.opendatahub.commit }}'
+    opendatahub.io/recommended-accelerators: '["gpu.intel.com/i915"]'
+  labels:
+    opendatahub.io/notebook-image: "true"
+  name: intel-pytorch
+  namespace: {{ $.Values.namespace }}
+spec:
+  lookupPolicy:
+    local: true
+  tags:
+  - name: intel-pytorch
+    annotations:
+      opendatahub.io/notebook-software: '[{"name":"Intel® oneAPI","version":"2024.0"},{"name":"Python","version":"v3.9"},{"name":"PyTorch","version":"2.1.2"},{"name":"Intel® Extension for PyTorch","version":"2.1.100"}]'
+      opendatahub.io/notebook-python-dependencies: '[{"name":"PyTorch","version":"2.1.2"},{"name":"Intel® Extension for PyTorch","version":"2.1.100"},{"name":"Tensorboard","version":"2.15"},{"name":"Boto3","version":"1.34"},{"name":"Kafka-Python","version":"2.0"},{"name":"Kfp-tekton","version":"1.5"},{"name":"Matplotlib","version":"3.6"},{"name":"Numpy","version":"1.26"},{"name":"Pandas","version":"1.5"},{"name":"Scikit-learn","version":"1.4"},{"name":"Scipy","version":"1.11"},{"name":"Elyra","version":"3.15"},{"name":"PyMongo","version":"4.5"},{"name":"Pyodbc","version":"4.0"}, {"name":"Codeflare-SDK","version":"0.13"}, {"name":"Sklearn-onnx","version":"1.15"}, {"name":"Psycopg","version":"3.1"}, {"name":"MySQL Connector/Python","version":"8.0"}]'
+      openshift.io/imported-from: 'quay.io/opendatahub/workbench-images:jupyter-intel-pytorch-ubi9-python-3.9-{{ $.Values.opendatahub.commit }}'
+    from:
+      kind: DockerImage
+      name: {{ $.Values.registry.root }}/{{ $.Values.registry.repo }}:jupyter-intel-pytorch-ubi9-python-3.9-{{ $.Values.opendatahub.commit }}
+    referencePolicy:
+      type: Source
+---
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  annotations: 
+    opendatahub.io/notebook-image-creator: 'kube:admin'
+    opendatahub.io/notebook-image-desc: 'Jupyter notebook image with Intel® optimized Machine Learning libraries and dependencies to start experimenting with advanced AI/ML notebooks.'
+    opendatahub.io/notebook-image-name: Intel® Optimized ML
+    opendatahub.io/notebook-image-url: 'quay.io/opendatahub/workbench-images:jupyter-intel-ml-ubi9-python-3.9-{{ $.Values.opendatahub.commit }}'
+    opendatahub.io/recommended-accelerators: '[]'
+  labels:
+    app.kubernetes.io/created-by: byon
+    opendatahub.io/dashboard: 'true'
+    opendatahub.io/notebook-image: 'true'
+  name: intel-ml
+  namespace: {{ $.Values.namespace }}
+spec:
+  lookupPolicy:
+    local: true
+  tags:
+  - name: intel-ml
+    annotations:
+      opendatahub.io/notebook-software: '[{"name":"Python","version":"v3.9"}]'
+      opendatahub.io/notebook-python-dependencies: '[{"name":"Boto3","version":"1.34"},{"name":"Kafka-Python","version":"2.0"},{"name":"Kfp","version":"1.8"},{"name":"Matplotlib","version":"3.6"},{"name":"Numpy","version":"1.24"},{"name":"Pandas","version":"2.1"},{"name":"Scikit-learn","version":"1.3"},{"name":"Scipy","version":"1.11"},{"name":"Odh-Elyra","version":"3.15"},{"name":"PyMongo","version":"4.5"},{"name":"Pyodbc","version":"4.0"}, {"name":"Codeflare-SDK","version":"0.13"}, {"name":"Sklearn-onnx","version":"1.15"}, {"name":"Psycopg","version":"3.1"}, {"name":"MySQL Connector/Python","version":"8.0"}]'
+      openshift.io/imported-from: 'quay.io/opendatahub/workbench-images:jupyter-intel-ml-ubi9-python-{{ $.Values.opendatahub.commit }}'
+    from:
+      kind: DockerImage
+      name: {{ $.Values.registry.root }}/{{ $.Values.registry.repo }}:jupyter-intel-ml-ubi9-python-3.9-{{ $.Values.opendatahub.commit }}
     referencePolicy:
       type: Source
